@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           animefreak tracker
 // @namespace      git2samus
-// @include        http://www.animefreak.tv/tracker
+// @include        http://www.animefreak.tv/tracker*
 // ==/UserScript==
 
 var shows = [
