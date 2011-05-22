@@ -19,7 +19,7 @@ var links = document.getElementById('primary').getElementsByTagName('a');
 for (var i=0; i<links.length; i++) {
     var link = links[i];
     for (var j=0; j<shows.length; j++) {
-        if (link.text.indexOf(shows[j]) >= 0) {
+        if (link.text.toLowerCase().indexOf(shows[j].toLowerCase()) >= 0) {
             link.style.fontWeight = 'bold';
             break;
         }
