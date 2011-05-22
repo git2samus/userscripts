@@ -8,15 +8,20 @@ var shows = [
     'X-Men',
     'Fairy Tail',
     'Deadman Wonderland',
-    '\\[C\\] The Money of Soul and Possibility Control',
+    'The Money of Soul and Possibility Control',
     'Naruto Shippuuden',
     'Steins Gate',
+    'Break Blade',
+    'Lost Canvas',
 ];
-var shows_re = new RegExp('(' + shows.join('|') + ') Episode \\d+');
 
 var links = document.getElementById('primary').getElementsByTagName('a');
 for (var i=0; i<links.length; i++) {
     var link = links[i];
-    if (shows_re.test(link.text))
-        link.style.fontWeight = 'bold';
+    for (var j=0; j<shows.length; j++) {
+        if (link.text.indexOf(shows[j]) >= 0) {
+            link.style.fontWeight = 'bold';
+            break;
+        }
+    }
 }
