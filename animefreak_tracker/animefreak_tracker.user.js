@@ -4,9 +4,24 @@
 // @include        http://www.animefreak.tv/tracker*
 // ==/UserScript==
 
-function mytest(e) { alert('a'); e.preventDefault(); }
+var safeJSON = {
+    parse: function(data) {
+        try {
+            return JSON.parse(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
 
 function get_shows() {
+    var shows = safeJSON.parse(localStorage.getItem('af_tracker'));
+
+    if (shows instanceof Array)
+        return shows;
+
+    return [];
+
     return [
         'X-Men',
         'Fairy Tail',
@@ -19,6 +34,18 @@ function get_shows() {
     ];
 }
 
+function add_show(e) {
+    var new_show = prompt('Add show');
+
+    if (new_show !== null) {
+        var shows = get_shows();
+        shows.push(new_show);
+        localStorage.setItem('af_tracker', JSON.stringify(shows));
+    }
+
+    e.preventDefault();
+}
+
 function update_table(container) {
     var shows = get_shows();
 
@@ -27,12 +54,13 @@ function update_table(container) {
         tableHTML += '<tr><td><a href="#">' + shows[j] + '</a></td></tr>';
 
     container.innerHTML = '<table>' + tableHTML + '</table>';
+
     // container.innerHTML += '<a id="add_show" href="#">Add show...</a>';
-    var add_show = document.createElement('a');
-    add_show.innerHTML = 'Add show...';
-    add_show.href = '#';
-    add_show.addEventListener('click', mytest, false);
-    container.appendChild(add_show);
+    var add_show_link = document.createElement('a');
+    add_show_link.innerHTML = 'Add show...';
+    add_show_link.href = '#';
+    add_show_link.addEventListener('click', add_show, false);
+    container.appendChild(add_show_link);
 }
 
 function highlight_links() {
