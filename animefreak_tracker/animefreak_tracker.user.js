@@ -33,7 +33,7 @@ var safeJSON = {
 function get_shows() {
     var shows = safeJSON.parse(localStorage.getItem('af_tracker'));
     if (shows instanceof Array)
-        return shows;
+        return shows.sort();
 
     return [];
 }
