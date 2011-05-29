@@ -547,6 +547,9 @@ var RESUtils = {
 		}
 		return this.curMul;
 	},
+	isMultireddit: function() {
+		return RESUtils.currentMultireddit().length > 1;
+	},
 	getXYpos: function (obj) {
 		var topValue= 0,leftValue= 0;
 		while(obj){
