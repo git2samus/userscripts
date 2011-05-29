@@ -536,6 +536,17 @@ var RESUtils = {
 			return this.curSub;
 		}
 	},
+	currentMultireddit: function() {
+		if (typeof(this.curMul) == 'undefined') {
+			var curSub = RESUtils.currentSubreddit();
+			if (curSub != null) {
+				this.curMul = curSub.split('+');
+			} else {
+				this.curMul = [];
+			}
+		}
+		return this.curMul;
+	},
 	getXYpos: function (obj) {
 		var topValue= 0,leftValue= 0;
 		while(obj){
