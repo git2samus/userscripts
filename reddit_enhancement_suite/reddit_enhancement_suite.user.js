@@ -5150,13 +5150,19 @@ modules['betteReddit'] = {
 		// Listen for subscriptions / unsubscriptions from reddits so we know to reload the JSON string...
 		// also, add a +/- shortcut button...
 		if (RESUtils.currentSubreddit()) {
-			var subButton = document.querySelector('.fancy-toggle-button');
-			if (subButton) {
-				subButton.addEventListener('click',function() {
-					// reset the last checked time for the subreddit list so that we refresh it anew no matter what.
-					RESStorage.setItem('RESmodules.betteReddit.subreddits.lastCheck.'+RESUtils.loggedInUser(),0);
-				},false);
-				var theSubredditLink = document.querySelector('h1.redditname');
+			var subButtons = document.querySelectorAll('.fancy-toggle-button');
+			if (subButtons.length) {
+				for (var i=0; i<subButtons.length; i++) {
+					subButtons[i].addEventListener('click',function() {
+						// reset the last checked time for the subreddit list so that we refresh it anew no matter what.
+						RESStorage.setItem('RESmodules.betteReddit.subreddits.lastCheck.'+RESUtils.loggedInUser(),0);
+					}, false);
+				}
+				if (RESUtils.isMultireddit()) {
+					var theSubredditLink = document.querySelector('.sidecontentbox h1');
+				} else {
+					var theSubredditLink = document.querySelector('h1.redditname');
+				}
 				if (theSubredditLink) {
 					var theSC = document.createElement('span');
 					theSC.setAttribute('class','RESshortcut RESshortcutside');
