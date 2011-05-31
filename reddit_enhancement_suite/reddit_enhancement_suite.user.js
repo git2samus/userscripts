@@ -31,18 +31,18 @@ var RESVersion = 3.4;
 	
 	Thanks, I appreciate your consideration.  Without further ado, the all-important GPL Statement:
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -135,25 +135,25 @@ function removeClass(ele,cls) {
 }
 
 function post_to_url(path, params, method) {
-    method = method || "post"; // Set method to post by default, if not specified.
+	method = method || "post"; // Set method to post by default, if not specified.
 
-    // The rest of this code assumes you are not using a library.
-    // It can be made less wordy if you use one.
-    var form = document.createElement("form");
-    form.setAttribute("method", method);
-    form.setAttribute("action", path);
+	// The rest of this code assumes you are not using a library.
+	// It can be made less wordy if you use one.
+	var form = document.createElement("form");
+	form.setAttribute("method", method);
+	form.setAttribute("action", path);
 
-    for(var key in params) {
-        var hiddenField = document.createElement("input");
-        hiddenField.setAttribute("type", "hidden");
-        hiddenField.setAttribute("name", key);
-        hiddenField.setAttribute("value", params[key]);
+	for(var key in params) {
+		var hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", key);
+		hiddenField.setAttribute("value", params[key]);
 
-        form.appendChild(hiddenField);
-    }
+		form.appendChild(hiddenField);
+	}
 
-    document.body.appendChild(form);
-    form.submit();
+	document.body.appendChild(form);
+	form.submit();
 }
 
 // This object will store xmlHTTPRequest callbacks for Safari because Safari's extension architecture seems stupid.
@@ -604,8 +604,8 @@ var RESUtils = {
 	},
 	stripHTML: function(str) {
 		var regExp = /<\/?[^>]+>/gi;
-        str = str.replace(regExp,"");
-        return str;
+		str = str.replace(regExp,"");
+		return str;
 	},
 	fadeElementOut: function(obj, speed) {
 		if (obj.getAttribute('isfading') == 'in') {
@@ -1227,11 +1227,11 @@ var gdAlert = {
 		
 		// center messagebox (requires prototype functions we don't have, so we'll redefine...)
 		// var arrayPageScroll = document.viewport.getScrollOffsets();
-        // var winH = arrayPageScroll[1] + (document.viewport.getHeight());
-        // var lightboxLeft = arrayPageScroll[0];
+		// var winH = arrayPageScroll[1] + (document.viewport.getHeight());
+		// var lightboxLeft = arrayPageScroll[0];
 		var arrayPageScroll = [ document.documentElement.scrollLeft , document.documentElement.scrollTop ];
-        var winH = arrayPageScroll[1] + (window.innerHeight);
-        var lightboxLeft = arrayPageScroll[0];
+		var winH = arrayPageScroll[1] + (window.innerHeight);
+		var lightboxLeft = arrayPageScroll[0];
 		
 		gdAlert.container.style.top = ((winH / 2) - 90) + "px";
 		gdAlert.container.style.left = ((gdAlert.getPageSize()[0] / 2) - 155) + "px";
@@ -1257,7 +1257,7 @@ var gdAlert = {
 	},
 	
 	getPageSize: function() {
-	        
+			
 		var xScroll, yScroll;
 		
 		if (window.innerHeight && window.scrollMaxY) {	
@@ -11271,71 +11271,71 @@ var Konami = function() {
 					obj.attachEvent( "on"+type, obj[type+fn] );
 				}
 			},
-	        input:"",
-	        pattern:"3838404037393739666513",
-	        load: function(link) {	
+			input:"",
+			pattern:"3838404037393739666513",
+			load: function(link) {	
 				
 				this.addEvent(document,"keydown", function(e,ref_obj) {											
 					if (ref_obj) konami = ref_obj; // IE
 					konami.input+= e ? e.keyCode : event.keyCode;
 					if (konami.input.length > konami.pattern.length) konami.input = konami.input.substr((konami.input.length - konami.pattern.length));
 					if (konami.input == konami.pattern) {
-                    konami.code(link);
+					konami.code(link);
 					konami.input="";
-                   	return;
-                    }
-            	},this);
-           this.iphone.load(link)
-	                
+					return;
+					}
+				},this);
+		   this.iphone.load(link)
+					
 				},
-	        code: function(link) { window.location=link},
-	        iphone:{
-	                start_x:0,
-	                start_y:0,
-	                stop_x:0,
-	                stop_y:0,
-	                tap:false,
-	                capture:false,
+			code: function(link) { window.location=link},
+			iphone:{
+					start_x:0,
+					start_y:0,
+					stop_x:0,
+					stop_y:0,
+					tap:false,
+					capture:false,
 									orig_keys:"",
-	                keys:["UP","UP","DOWN","DOWN","LEFT","RIGHT","LEFT","RIGHT","TAP","TAP","TAP"],
-	                code: function(link) { konami.code(link);},
-	                load: function(link){
+					keys:["UP","UP","DOWN","DOWN","LEFT","RIGHT","LEFT","RIGHT","TAP","TAP","TAP"],
+					code: function(link) { konami.code(link);},
+					load: function(link){
 										orig_keys = this.keys;
-	    							konami.addEvent(document,"touchmove",function(e){
-	                          if(e.touches.length == 1 && konami.iphone.capture==true){ 
-	                            var touch = e.touches[0]; 
-	                                konami.iphone.stop_x = touch.pageX;
-	                                konami.iphone.stop_y = touch.pageY;
-	                                konami.iphone.tap = false; 
-	                                konami.iphone.capture=false;
-	                                konami.iphone.check_direction();
-	                                }
-	                                });               
-	                        konami.addEvent(document,"touchend",function(evt){
-	                                if (konami.iphone.tap==true) konami.iphone.check_direction(link);           
-	                                },false);
-	                        konami.addEvent(document,"touchstart", function(evt){
-	                                konami.iphone.start_x = evt.changedTouches[0].pageX
-	                                konami.iphone.start_y = evt.changedTouches[0].pageY
-	                                konami.iphone.tap = true
-	                                konami.iphone.capture = true
-	                                });               
-	                                },
-	                check_direction: function(link){
-	                        x_magnitude = Math.abs(this.start_x-this.stop_x)
-	                        y_magnitude = Math.abs(this.start_y-this.stop_y)
-	                        x = ((this.start_x-this.stop_x) < 0) ? "RIGHT" : "LEFT";
-	                        y = ((this.start_y-this.stop_y) < 0) ? "DOWN" : "UP";
-	                        result = (x_magnitude > y_magnitude) ? x : y;
-	                        result = (this.tap==true) ? "TAP" : result;                     
+									konami.addEvent(document,"touchmove",function(e){
+							  if(e.touches.length == 1 && konami.iphone.capture==true){ 
+								var touch = e.touches[0]; 
+									konami.iphone.stop_x = touch.pageX;
+									konami.iphone.stop_y = touch.pageY;
+									konami.iphone.tap = false; 
+									konami.iphone.capture=false;
+									konami.iphone.check_direction();
+									}
+									});               
+							konami.addEvent(document,"touchend",function(evt){
+									if (konami.iphone.tap==true) konami.iphone.check_direction(link);           
+									},false);
+							konami.addEvent(document,"touchstart", function(evt){
+									konami.iphone.start_x = evt.changedTouches[0].pageX
+									konami.iphone.start_y = evt.changedTouches[0].pageY
+									konami.iphone.tap = true
+									konami.iphone.capture = true
+									});               
+									},
+					check_direction: function(link){
+							x_magnitude = Math.abs(this.start_x-this.stop_x)
+							y_magnitude = Math.abs(this.start_y-this.stop_y)
+							x = ((this.start_x-this.stop_x) < 0) ? "RIGHT" : "LEFT";
+							y = ((this.start_y-this.stop_y) < 0) ? "DOWN" : "UP";
+							result = (x_magnitude > y_magnitude) ? x : y;
+							result = (this.tap==true) ? "TAP" : result;                     
 
-	                        if (result==this.keys[0]) this.keys = this.keys.slice(1,this.keys.length)
-	                        if (this.keys.length==0) { 
+							if (result==this.keys[0]) this.keys = this.keys.slice(1,this.keys.length)
+							if (this.keys.length==0) { 
 								this.keys=this.orig_keys;
 								this.code(link)
 							}
 					}
-	               }
+				   }
 	}
 	return konami;
 };
