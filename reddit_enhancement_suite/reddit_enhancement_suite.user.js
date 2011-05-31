@@ -525,7 +525,7 @@ var RESUtils = {
 	},
 	currentSubreddit: function() {
 		if (typeof(this.curSub) == 'undefined') {
-			var match = location.href.match(/https?:\/\/(?:[a-z]+).reddit.com\/r\/([\w\.]+).*/i);
+			var match = location.href.match(/https?:\/\/(?:[a-z]+).reddit.com\/r\/([\w\.\+]+).*/i);
 			if (match != null) {
 				this.curSub = match[1];
 				return match[1];
