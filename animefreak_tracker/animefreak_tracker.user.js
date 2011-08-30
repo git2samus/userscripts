@@ -79,7 +79,8 @@ function edit_show(e) {
 }
 
 function highlight_links(shows) {
-    var links = document.getElementById('primary').getElementsByTagName('a');
+    var shows_listing = document.getElementById('primary');
+    var links = shows_listing.getElementsByTagName('a');
     for (var i=0; i<links.length; i++) {
         var link = links[i];
         var match = false;
@@ -130,3 +131,8 @@ var rsidebar = document.evaluate('//div[@class="rsidebar"]', document, null, XPa
 rsidebar.insertBefore(container, rsidebar.firstElementChild);
 
 update_table();
+
+// respond to pagination
+var shows_listing = document.getElementById('primary');
+var handler = function(e) { highlight_links(get_shows()); };
+shows_listing.addEventListener('DOMNodeInserted', handler, false);
